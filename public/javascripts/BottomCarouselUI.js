@@ -54,27 +54,14 @@ export default class BottomCarouselUI {
   }
 
   cloneFirstLast() {
-    console.log(this.$carousel.lastElementChild.previousElementSibling);
-
     const clonedFirst = this.$carousel.firstElementChild.cloneNode(true);
     clonedFirst.id = "b-firstClone";
 
-    // const clonedFirstNext = this.$carousel.firstElementChild.nextElementSibling.cloneNode(
-    //   true
-    // );
-    // clonedFirstNext.id = "b-firstNextClone";
-
     const clonedLast = this.$carousel.lastElementChild.cloneNode(true);
     clonedLast.id = "b-lastClone";
-    // const clonedLastPrev = this.$carousel.lastElementChild.previousElementSibling.cloneNode(
-    //   true
-    // );
-    // clonedLastPrev.id = "b-lastPrevClone";
 
     this.$carousel.insertBefore(clonedFirst, null);
-
     this.$carousel.insertBefore(clonedLast, this.$carousel.firstElementChild);
-    // this.$carousel.insertAdjacentElement("afterbegin", clonedLastPrev); //id 8 image
 
     this.cloneFirstRemainder();
   }
@@ -98,10 +85,6 @@ export default class BottomCarouselUI {
     }
   }
 
-  //   runTwoSecsTimer() {
-  //     setTimeout(this.moveTwoImage, 2000);
-  //   }
-
   movePrevious() {
     if (this.counter <= 0) return;
     this.$carousel.style.transition = "transform 0.3s ease-in-out";
@@ -120,13 +103,6 @@ export default class BottomCarouselUI {
       "translateX(" + -this.size * this.counter + "px)";
   }
 
-  //   movePreviousTwoImage() {
-  //     if (this.counter <= 0) return;
-  //     this.$carousel.style.transition = "transform 0.3s ease-in-out";
-  //     this.counter -= 2;
-  //     this.$carousel.style.transform =
-  //       "translateX(" + -this.size * this.counter + "px)";
-  //   }
   onEvent() {
     this.$nextBtn.addEventListener("click", this.moveNext.bind(this));
     this.$prevBtn.addEventListener("click", this.movePrevious.bind(this));
